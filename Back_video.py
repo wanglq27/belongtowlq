@@ -1,10 +1,10 @@
-import scipy as sci
 import cv2
+import scipy as sci
 import numpy as np
 from scipy import signal
 '''
 计算阈值，过滤掉一些振动过大or不动的点
-在模态频率附近进行带通滤波，再映射到原视频中
+在模态频率附近进行带通滤波，再放大响应映射到原视频中
 '''
 def filter(freq,x,A,B,t):
     # 求阈值
@@ -58,7 +58,10 @@ def num2color(values):
        return (0, 97, 255)  # 红色
    if (values > vmin+5*f) and (values <= vmax):
        return (0,0,255)#红色
-
+'''
+又读了一次视频
+用之前读取过的camera不能成功读取，原因暂时未知。
+'''
 def backvideo(x,y,tup1,tup2):
     cap = cv2.VideoCapture('VID604.mp4')
     i = 0
